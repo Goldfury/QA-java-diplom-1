@@ -8,22 +8,21 @@ import praktikum.Bun;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BunTest {
-    @Mock
-    private Bun bun;
+    private Bun bun = new Bun("Whopper", 850f);
+    private String name = "Whopper";
+    private float price= 850f;
 
 
     @Test
     public void getNameReturnsName() {
-        Mockito.when(bun.getName()).thenReturn("Whopper");
         Assert.assertEquals("Название булочки не совпадает",
-                "Whopper", bun.getName());
+                name, bun.getName());
     }
 
     @Test
     public void getPriceReturnsPrice() {
-        Mockito.when(bun.getPrice()).thenReturn(850f);
         Assert.assertEquals("Суммы не одинаковы",
-                850f, bun.getPrice(), 0f);
+                price, bun.getPrice(), 0f);
     }
 
 }
