@@ -16,7 +16,7 @@ import java.util.List;
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
 
-    @Spy
+
     Burger burger = new Burger();
 
     @Mock
@@ -33,13 +33,12 @@ public class BurgerTest {
     @Test
     public void setBunsTest() {
         burger.setBuns(bun);
-        Mockito.verify(burger,Mockito.times(1)).setBuns(bun);
+        Assert.assertEquals(bun, burger.bun);
     }
 
     @Test
     public void addIngredientTest() {
         burger.addIngredient(ingredient);
-        Mockito.verify(burger).addIngredient(ingredient);
         Assert.assertEquals(1, burger.ingredients.size());
         Assert.assertEquals(ingredient, burger.ingredients.get(0));
     }
@@ -53,22 +52,22 @@ public class BurgerTest {
     }
 
     @Test
-    public void moveIngredientTest(){
+    public void moveIngredientTest() {
         burger.addIngredient(ingredient);
         burger.addIngredient(ingredient2);
         burger.addIngredient(ingredient3);
-        Assert.assertEquals(3,burger.ingredients.size());
+        Assert.assertEquals(3, burger.ingredients.size());
         burger.moveIngredient(1, 2);
         Assert.assertEquals(ingredient2, burger.ingredients.get(2));
     }
 
     @Test
-    public void getPriceTest(){
+    public void getPriceTest() {
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
         Mockito.when(bun.getPrice()).thenReturn(10f);
         Mockito.when(ingredient.getPrice()).thenReturn(5f);
-        Assert.assertEquals(25f,burger.getPrice(),0f);
+        Assert.assertEquals(25f, burger.getPrice(), 0f);
     }
 
     @Test
@@ -95,7 +94,6 @@ public class BurgerTest {
 
         Assert.assertEquals(expectedString, burger.getReceipt());
     }
-
 
 
 }
