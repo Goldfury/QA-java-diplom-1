@@ -1,8 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 
@@ -11,6 +9,7 @@ public class BunTest {
     private Bun bun = new Bun("Whopper", 850f);
     private String name = "Whopper";
     private float price= 850f;
+    private float delta= 0f;
 
 
     @Test
@@ -22,7 +21,7 @@ public class BunTest {
     @Test
     public void getPriceReturnsPrice() {
         Assert.assertEquals("Суммы не одинаковы",
-                price, bun.getPrice(), 0f);
+                price, bun.getPrice(), delta);
     }
 
 }
